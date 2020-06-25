@@ -19,6 +19,9 @@
 .firebaserc
 firebase.json
 
+# images folder
+/images
+
 # production
 /build
 
