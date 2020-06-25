@@ -13,6 +13,7 @@ const MONGODB_URI = `${process.env.MONGODB_URI}`;
 
 // Setup routes for feed
 const feedRoutes = require("./routes/feed");
+const authRoutes = require("./routes/auth");
 
 // Create express server
 const app = express();
@@ -34,8 +35,8 @@ const fileStorage = multer.diskStorage({
 const fileFilter = (req, file, callBack) => {
   if (
     file.mimetype === "image/png" ||
-    file.mimetype === "jpg" ||
-    file.mimetype === "jpeg"
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/jpeg"
   ) {
     callBack(null, true);
   } else {
@@ -69,6 +70,9 @@ app.use((req, res, next) => {
 
 // Forward requests to feed routes and controllers
 app.use("/feed", feedRoutes);
+
+// Forward request to auth routes and controllers
+app.use("/auth", authRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);

@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# images folder
+/images
+
 # api keys
 .env
 
